@@ -22,6 +22,8 @@ class TimerDisplay {
     this.displayProgressBar = document.getElementById('displayProgressBar');
     this.displayStatus = document.getElementById('displayStatus');
     this.nextSessionDisplay = document.getElementById('nextSessionDisplay');
+    this.elapsedDisplay = document.getElementById('elapsedDisplay');
+    this.sessionNumberDisplay = document.getElementById('sessionNumberDisplay');
   }
 
   setupEventListeners() {
@@ -61,6 +63,10 @@ class TimerDisplay {
     } else {
       this.nextSessionDisplay.textContent = 'Fin del evento';
     }
+
+    // Mostrar número de sesión
+    const sessionIndex = AGENDA.findIndex(s => s.id === session.id);
+    this.sessionNumberDisplay.textContent = `${sessionIndex + 1} de ${AGENDA.length}`;
   }
 
   startClockUpdate() {
@@ -113,6 +119,11 @@ class TimerDisplay {
       const remainingSec = Math.floor((remaining % 60000) / 1000);
       this.displayTimer.textContent = `${String(remainingMin).padStart(2, '0')}:${String(remainingSec).padStart(2, '0')}`;
 
+      // Mostrar tiempo transcurrido
+      const elapsedMin = Math.floor(elapsed / 60000);
+      const elapsedSec = Math.floor((elapsed % 60000) / 1000);
+      this.elapsedDisplay.textContent = `${String(elapsedMin).padStart(2, '0')}:${String(elapsedSec).padStart(2, '0')}`;
+
       const progress = (elapsed / sessionDurationMs) * 100;
       this.displayProgressBar.style.width = Math.min(progress, 100) + '%';
 
@@ -133,6 +144,7 @@ class TimerDisplay {
       }
     } else {
       this.displayTimer.textContent = '--:--';
+      this.elapsedDisplay.textContent = '00:00';
       this.displayStatus.textContent = 'Pausado';
       this.displayStatus.className = 'display-status paused';
     }
