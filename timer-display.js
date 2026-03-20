@@ -91,17 +91,24 @@ class TimerDisplay {
       const state = localStorage.getItem('timerState');
       if (state) {
         const data = JSON.parse(state);
-        if (data.currentSessionId && data.isRunning) {
+        if (data.currentSessionId) {
           this.currentSessionId = data.currentSessionId;
           this.isRunning = data.isRunning;
           this.sessionStartTime = data.sessionStartTime;
           this.pausedTime = data.pausedTime;
+          
+          // Actualizar información de sesión
+          const session = AGENDA.find(s => s.id === data.currentSessionId);
+          if (session) {
+            this.updateSessionDisplay(session);
+          }
         }
       }
     }
 
     if (!this.currentSessionId) {
       this.displayTimer.textContent = '--:--';
+      this.elapsedDisplay.textContent = '00:00';
       this.displayStatus.textContent = 'Esperando...';
       this.displayStatus.className = 'display-status waiting';
       return;
