@@ -22,9 +22,10 @@ class TimerControl {
     this.pauseBtn = document.getElementById('pauseBtn');
     this.resumeBtn = document.getElementById('resumeBtn');
     this.nextBtn = document.getElementById('nextBtn');
-    this.minusBtn = document.getElementById('minusBtn');
-    this.plusBtn = document.getElementById('plusBtn');
-    this.timeAdjust = document.getElementById('timeAdjust');
+    this.minus5Btn = document.getElementById('minus5Btn');
+    this.minus1Btn = document.getElementById('minus1Btn');
+    this.plus1Btn = document.getElementById('plus1Btn');
+    this.plus5Btn = document.getElementById('plus5Btn');
 
     this.sessionInfo = document.getElementById('sessionInfo');
     this.sessionTitle = document.getElementById('sessionTitle');
@@ -46,8 +47,10 @@ class TimerControl {
     this.pauseBtn.addEventListener('click', () => this.pauseTimer());
     this.resumeBtn.addEventListener('click', () => this.resumeTimer());
     this.nextBtn.addEventListener('click', () => this.nextSession());
-    this.minusBtn.addEventListener('click', () => this.adjustTime(-5));
-    this.plusBtn.addEventListener('click', () => this.adjustTime(5));
+    this.minus5Btn.addEventListener('click', () => this.adjustTime(-5));
+    this.minus1Btn.addEventListener('click', () => this.adjustTime(-1));
+    this.plus1Btn.addEventListener('click', () => this.adjustTime(1));
+    this.plus5Btn.addEventListener('click', () => this.adjustTime(5));
 
     // Escuchar cambios en Local Storage desde otras ventanas
     window.addEventListener('storage', (e) => {
