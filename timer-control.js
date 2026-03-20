@@ -179,16 +179,17 @@ class TimerControl {
   }
 
   adjustTime(minutes) {
+    if (!this.currentSessionId) return;
     if (!this.isRunning && !this.isPaused) return;
 
+    const session = AGENDA.find(s => s.id === this.currentSessionId);
+    if (!session) return;
+
     const adjustmentMs = minutes * 60 * 1000;
-    this.pausedTime += adjustmentMs;
-    this.timeAdjust.value = Math.round(this.pausedTime / 60000);
-
-    if (this.isRunning) {
-      this.startTime = Date.now() - this.pausedTime;
-    }
-
+    
+    // Ajustar el tiempo de inicio de la sesión
+    this.sessionStartTime -= adjustmentMs;
+    
     this.updateTimer();
     this.saveState();
   }
