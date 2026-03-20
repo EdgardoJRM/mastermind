@@ -1,0 +1,228 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║           🎯 PANEL DE CONTROL DE TIEMPOS - COMIENZA AQUÍ 🎯              ║
+║                                                                            ║
+║                    Sistema Profesional de Control de Tiempos              ║
+║                         para tu Evento en Vivo                            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+✨ ¿QUÉ ES ESTO?
+═════════════════
+
+Un sistema profesional que te permite:
+
+  ✅ Controlar los tiempos de cada sesión de tu evento
+  ✅ Mostrar un temporizador grande en un proyector/monitor
+  ✅ Sincronizar automáticamente entre dos ventanas
+  ✅ Ver indicadores visuales (verde, amarillo, rojo)
+  ✅ Ajustar tiempos manualmente si es necesario
+
+
+🚀 INICIO RÁPIDO (5 MINUTOS)
+═════════════════════════════
+
+1. ABRE DOS VENTANAS DEL NAVEGADOR:
+   
+   Ventana 1: http://localhost:8000/timer.html
+   Ventana 2: http://localhost:8000/timer.html
+
+2. EN LA PRIMERA VENTANA:
+   
+   - Selecciona "Panel de Control" (arriba a la derecha)
+   - Selecciona una sesión del dropdown
+   - Haz clic en "Iniciar"
+
+3. EN LA SEGUNDA VENTANA:
+   
+   - Selecciona "Pantalla de Proyección" (arriba a la derecha)
+   - Verás el temporizador en números grandes
+
+4. ¡LISTO! Ahora puedes controlar desde la primera ventana
+   y mostrar en la segunda
+
+
+📁 ARCHIVOS IMPORTANTES
+═════════════════════════
+
+Para USAR el sistema:
+  → timer.html              (Abre esto en el navegador)
+  → test.html               (Para probar que todo funciona)
+  → index-timer.html        (Página de inicio con enlaces)
+
+Para ENTENDER el sistema:
+  → README.md               (Documentación completa)
+  → QUICK_START.md          (Guía rápida)
+  → FILE_STRUCTURE.txt      (Estructura de archivos)
+
+Para PERSONALIZAR:
+  → agenda.js               (Edita aquí las sesiones)
+  → timer-styles.css        (Edita aquí los colores)
+
+Para DESPLEGAR:
+  → DEPLOYMENT.md           (Guía de despliegue en Vercel)
+  → vercel.json             (Configuración para Vercel)
+
+
+🎮 CONTROLES DEL PANEL
+═══════════════════════
+
+▶️  INICIAR      - Comienza el temporizador
+⏸️  PAUSAR       - Pausa el temporizador
+▶️  REANUDAR     - Continúa desde donde se pausó
+⏭️  SIGUIENTE    - Va a la siguiente sesión
+➕ +5 MIN       - Añade 5 minutos
+➖ -5 MIN       - Resta 5 minutos
+
+
+🎨 INDICADORES DE COLOR
+═════════════════════════
+
+🟢 VERDE        - Sesión en tiempo (> 5 minutos restantes)
+🟡 AMARILLO     - Últimos 5 minutos de la sesión
+🔴 ROJO         - Se pasó del tiempo asignado
+
+
+📋 AGENDA DEL EVENTO
+══════════════════════
+
+08:00 - 08:59   Registro & Desayuno
+09:00 - 09:10   Apertura – Bienvenida
+09:10 - 09:50   El Poder de la Marca Personal (Edgardo Hernández)
+09:50 - 10:45   Reconocimientos
+10:45 - 11:00   AM Break Estratégico
+11:00 - 12:00   Videos/Clip con IA (Elizabeth Báez)
+12:00 - 13:30   Almuerzo
+13:45 - 15:00   Comunicación (Bengie Rivera)
+15:00 - 15:15   PM Break Estratégico
+15:15 - 17:00   El lenguaje del cliente ideal (Edgardo Sr. y Jr.)
+17:00 - 17:30   Step into your calling (Edgardo Hernández)
+
+
+🔧 PERSONALIZAR LA AGENDA
+═══════════════════════════
+
+1. Abre el archivo: agenda.js
+2. Busca el array: const AGENDA = [
+3. Edita las sesiones:
+
+   {
+     id: 1,
+     inicio: "08:00",           ← Hora de inicio
+     fin: "08:59",              ← Hora de fin
+     titulo: "Tu Sesión",       ← Nombre de la sesión
+     presentador: "Tu Nombre",  ← Nombre del presentador
+     tipo: "session"            ← Tipo: session, break, closing
+   }
+
+4. Guarda el archivo
+5. Recarga el navegador (Ctrl+F5)
+
+
+🌐 DESPLEGAR EN VERCEL (PRODUCCIÓN)
+═════════════════════════════════════
+
+1. Crea un repositorio Git:
+   
+   cd "/Users/gardo/Creado mi video con IA"
+   git init
+   git add .
+   git commit -m "Event Timer System"
+
+2. Sube a GitHub:
+   
+   git remote add origin https://github.com/tu-usuario/tu-repo.git
+   git push -u origin main
+
+3. Ve a vercel.com y conecta tu repositorio
+
+4. ¡Listo! Tu URL será: https://tu-proyecto.vercel.app/timer.html
+
+
+❓ PREGUNTAS FRECUENTES
+═════════════════════════
+
+P: ¿Cómo sincroniza entre dos ventanas?
+R: Usa Local Storage del navegador. Ambas ventanas deben estar
+   en el mismo navegador (Chrome, Firefox, Safari, etc.)
+
+P: ¿Funciona sin internet?
+R: Sí, funciona completamente offline. Solo necesitas un navegador.
+
+P: ¿Puedo cambiar los colores?
+R: Sí, edita timer-styles.css y modifica las variables CSS.
+
+P: ¿Puedo agregar más sesiones?
+R: Sí, edita agenda.js y añade nuevos objetos al array AGENDA.
+
+P: ¿Funciona en móvil?
+R: Sí, es responsive. Pero es mejor usar desktop para el control.
+
+P: ¿Qué pasa si recargo la página?
+R: El estado se mantiene en Local Storage, así que no pierdes nada.
+
+
+🆘 SOLUCIONAR PROBLEMAS
+═════════════════════════
+
+Problema: No se sincroniza entre ventanas
+Solución: Verifica que ambas estén en el mismo navegador
+
+Problema: El temporizador no aparece
+Solución: Selecciona una sesión primero en el Panel de Control
+
+Problema: Los estilos no cargan
+Solución: Recarga la página (Ctrl+F5)
+
+Problema: Local Storage lleno
+Solución: Abre consola (F12) y ejecuta: localStorage.clear()
+
+
+📞 SOPORTE
+═══════════
+
+1. Abre la consola (F12) para ver errores
+2. Limpia Local Storage: localStorage.clear()
+3. Recarga la página (Ctrl+F5)
+4. Revisa el README.md para más información
+
+
+✨ CARACTERÍSTICAS
+═══════════════════
+
+✅ Sincronización en tiempo real
+✅ Dos vistas independientes (Control + Proyección)
+✅ Indicadores visuales (verde, amarillo, rojo)
+✅ Información completa del evento
+✅ Controles intuitivos
+✅ Ajuste manual de tiempos
+✅ Persistencia de estado
+✅ Diseño responsivo
+✅ Fácil de personalizar
+✅ Listo para Vercel
+
+
+🎯 PRÓXIMOS PASOS
+═══════════════════
+
+1. ✅ Prueba el sistema localmente
+2. ✅ Personaliza la agenda según tus necesidades
+3. ✅ Prueba en dos ventanas/pestañas
+4. ✅ Despliega en Vercel
+5. ✅ Usa en tu evento
+
+
+═══════════════════════════════════════════════════════════════════════════
+
+                    ¡LISTO PARA USAR! 🚀
+
+              Abre timer.html en tu navegador ahora
+
+═══════════════════════════════════════════════════════════════════════════
+
+Versión: 1.0
+Fecha: 20 de Marzo, 2026
+Estado: Producción ✅
+
+═══════════════════════════════════════════════════════════════════════════

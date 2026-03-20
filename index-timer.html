@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control de Tiempos - Inicio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #0066FF 0%, #667eea 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-section ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .info-section li {
+            padding: 12px;
+            background: #f9f9f9;
+            border-left: 4px solid #0066FF;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .info-section li strong {
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Panel de Control de Tiempos</h1>
+            <p>Sistema profesional para gestionar tiempos en tu evento</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">⏱️</div>
+                <h2>Panel de Control</h2>
+                <p>Interfaz para controlar los tiempos de cada sesión. Selecciona sesiones, inicia/pausa el temporizador y ajusta tiempos manualmente.</p>
+                <a href="timer.html" class="card-link">Abrir Panel de Control</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📺</div>
+                <h2>Pantalla de Proyección</h2>
+                <p>Vista optimizada para proyector. Muestra el tiempo restante en números grandes, presentador actual e indicadores visuales.</p>
+                <a href="timer.html" class="card-link">Abrir Pantalla de Proyección</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🧪</div>
+                <h2>Página de Pruebas</h2>
+                <p>Verifica que todos los componentes estén funcionando correctamente. Prueba la sincronización entre ventanas.</p>
+                <a href="test.html" class="card-link">Ir a Pruebas</a>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>📖 Documentación</h3>
+            <ul>
+                <li><strong>README.md</strong> - Documentación completa del sistema</li>
+                <li><strong>QUICK_START.md</strong> - Guía rápida de inicio</li>
+                <li><strong>IMPLEMENTATION_SUMMARY.md</strong> - Resumen de implementación</li>
+                <li><strong>DEPLOYMENT.md</strong> - Guía de despliegue en Vercel</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>🚀 Cómo Usar</h3>
+            <ul>
+                <li><strong>Paso 1:</strong> Abre timer.html en dos ventanas/pestañas</li>
+                <li><strong>Paso 2:</strong> En una selecciona "Panel de Control", en otra "Pantalla de Proyección"</li>
+                <li><strong>Paso 3:</strong> Selecciona una sesión y haz clic en "Iniciar"</li>
+                <li><strong>Paso 4:</strong> Verás el temporizador en la pantalla de proyección</li>
+                <li><strong>Paso 5:</strong> Usa los controles para pausar, reanudar o ir a la siguiente sesión</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>✨ Características</h3>
+            <ul>
+                <li>✅ Sincronización en tiempo real entre dos vistas</li>
+                <li>✅ Indicadores visuales (verde, amarillo, rojo)</li>
+                <li>✅ Información completa del evento</li>
+                <li>✅ Ajuste manual de tiempos</li>
+                <li>✅ Persistencia de estado</li>
+                <li>✅ Diseño responsivo</li>
+                <li>✅ Fácil de personalizar</li>
+                <li>✅ Listo para Vercel</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>📋 Agenda del Evento</h3>
+            <ul>
+                <li><strong>08:00 - 08:59</strong> - Registro & Desayuno</li>
+                <li><strong>09:00 - 09:10</strong> - Apertura – Bienvenida</li>
+                <li><strong>09:10 - 09:50</strong> - El Poder de la Marca Personal (Edgardo Hernández)</li>
+                <li><strong>09:50 - 10:45</strong> - Reconocimientos</li>
+                <li><strong>10:45 - 11:00</strong> - AM Break Estratégico</li>
+                <li><strong>11:00 - 12:00</strong> - Videos/Clip con IA (Elizabeth Báez)</li>
+                <li><strong>12:00 - 13:30</strong> - Almuerzo</li>
+                <li><strong>13:45 - 15:00</strong> - Comunicación (Bengie Rivera)</li>
+                <li><strong>15:00 - 15:15</strong> - PM Break Estratégico</li>
+                <li><strong>15:15 - 17:00</strong> - El lenguaje del cliente ideal (Edgardo Sr. y Jr.)</li>
+                <li><strong>17:00 - 17:30</strong> - Step into your calling (Edgardo Hernández)</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>🔧 Personalización</h3>
+            <ul>
+                <li><strong>Editar Agenda:</strong> Abre agenda.js y modifica el array AGENDA</li>
+                <li><strong>Cambiar Colores:</strong> Edita timer-styles.css y modifica las variables CSS</li>
+                <li><strong>Agregar Sesiones:</strong> Añade nuevos objetos al array AGENDA</li>
+                <li><strong>Cambiar Presentadores:</strong> Actualiza el campo "presentador" en cada sesión</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h3>🌐 Despliegue en Vercel</h3>
+            <ul>
+                <li><strong>Paso 1:</strong> Crea un repositorio Git: git init && git add . && git commit -m "Initial commit"</li>
+                <li><strong>Paso 2:</strong> Sube a GitHub</li>
+                <li><strong>Paso 3:</strong> Conecta en vercel.com</li>
+                <li><strong>Paso 4:</strong> Vercel desplegará automáticamente</li>
+                <li><strong>Resultado:</strong> Tu URL será: https://tu-proyecto.vercel.app/timer.html</li>
+            </ul>
+        </div>
+
+        <footer class="footer">
+            <p>Panel de Control de Tiempos v1.0 | Creado para tu evento | 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

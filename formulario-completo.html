@@ -1,0 +1,1074 @@
+<!-- FORMULARIO COMPLETO PARA CLICKFUNNELS -->
+<!-- Copia todo este código y pégalo en un elemento HTML personalizado -->
+
+<div id="ai-video-creator">
+  <style>
+    /* Estilos del formulario - Todo autocontenido */
+    #ai-video-creator * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #ai-video-creator {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: #111827;
+    }
+
+    .avc-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .avc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .avc-header h1 {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .avc-subtitle {
+      font-size: 18px;
+      color: #6B7280;
+      font-weight: 400;
+    }
+
+    .avc-progress {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+      border: 1px solid #E5E7EB;
+    }
+
+    .avc-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #E5E7EB;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .avc-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0066FF 0%, #667eea 100%);
+      border-radius: 999px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    .avc-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .avc-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avc-step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E5E7EB;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .avc-step.active .avc-step-number {
+      background: #0066FF;
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.2);
+    }
+
+    .avc-step-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6B7280;
+      text-align: center;
+    }
+
+    .avc-step.active .avc-step-label {
+      color: #0066FF;
+    }
+
+    .avc-form {
+      background: white;
+      border-radius: 20px;
+      padding: 48px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+      border: 1px solid #E5E7EB;
+      min-height: 500px;
+    }
+
+    .avc-step-content {
+      display: none;
+    }
+
+    .avc-step-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .avc-step-content h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avc-step-content h2::before {
+      content: '';
+      width: 6px;
+      height: 40px;
+      background: linear-gradient(180deg, #0066FF 0%, #667eea 100%);
+      border-radius: 999px;
+    }
+
+    .avc-step-desc {
+      font-size: 16px;
+      color: #6B7280;
+      margin-bottom: 32px;
+    }
+
+    .avc-field {
+      margin-bottom: 28px;
+    }
+
+    .avc-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .avc-select {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #111827;
+      background: white;
+      border: 2px solid #D1D5DB;
+      border-radius: 12px;
+      transition: all 0.3s;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%234B5563' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 48px;
+    }
+
+    .avc-select:focus {
+      border-color: #0066FF;
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.1);
+    }
+
+    .avc-radio-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .avc-radio-card {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .avc-radio-card input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .avc-radio-label {
+      display: block;
+      padding: 16px 20px;
+      background: #F9FAFB;
+      border: 2px solid #D1D5DB;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.3s;
+      color: #374151;
+    }
+
+    .avc-radio-card:hover .avc-radio-label {
+      border-color: #0066FF;
+      transform: translateY(-2px);
+    }
+
+    .avc-radio-card input:checked + .avc-radio-label {
+      background: #0066FF;
+      color: white;
+      border-color: #0066FF;
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.15);
+    }
+
+    .avc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .avc-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .avc-option input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .avc-option-label {
+      display: flex;
+      align-items: center;
+      padding: 18px 20px;
+      background: white;
+      border: 2px solid #D1D5DB;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s;
+      color: #1F2937;
+      min-height: 70px;
+    }
+
+    .avc-option:hover .avc-option-label {
+      border-color: #0066FF;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .avc-option input:checked + .avc-option-label {
+      background: linear-gradient(135deg, #0066FF 0%, #667eea 100%);
+      color: white;
+      border-color: #0066FF;
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.15);
+      font-weight: 600;
+    }
+
+    .avc-section {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .avc-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .avc-section h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .avc-section-desc {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 16px;
+    }
+
+    .avc-result {
+      background: #F9FAFB;
+      border-radius: 16px;
+      padding: 32px;
+      border: 2px solid #E5E7EB;
+    }
+
+    .avc-textarea {
+      width: 100%;
+      padding: 20px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #111827;
+      background: white;
+      border: 2px solid #D1D5DB;
+      border-radius: 12px;
+      resize: vertical;
+      min-height: 180px;
+      line-height: 1.7;
+      font-weight: 500;
+      outline: none;
+      transition: all 0.3s;
+      margin-bottom: 24px;
+    }
+
+    .avc-textarea:focus {
+      border-color: #0066FF;
+      box-shadow: 0 0 0 4px rgba(0,102,255,0.1);
+    }
+
+    .avc-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .avc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      outline: none;
+      flex: 1;
+      max-width: 200px;
+    }
+
+    .avc-btn-primary {
+      background: linear-gradient(135deg, #0066FF 0%, #667eea 100%);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .avc-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    .avc-btn-secondary {
+      background: white;
+      color: #374151;
+      border: 2px solid #D1D5DB;
+    }
+
+    .avc-btn-secondary:hover {
+      background: #F9FAFB;
+      transform: translateY(-2px);
+    }
+
+    .avc-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #111827;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .avc-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      #ai-video-creator {
+        padding: 20px 16px;
+      }
+      .avc-header h1 {
+        font-size: 32px;
+      }
+      .avc-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .avc-form {
+        padding: 28px 20px;
+      }
+      .avc-step-content h2 {
+        font-size: 24px;
+      }
+      .avc-radio-group {
+        grid-template-columns: 1fr;
+      }
+      .avc-grid {
+        grid-template-columns: 1fr;
+      }
+      .avc-nav {
+        flex-direction: column;
+      }
+      .avc-btn {
+        max-width: 100%;
+      }
+    }
+  </style>
+
+  <!-- Contenido del formulario -->
+  <div class="avc-header">
+    <div class="avc-badge">
+      ⭐ Herramienta Profesional IA
+    </div>
+    <h1>Creando mi Video con IA</h1>
+    <p class="avc-subtitle">Genera el prompt perfecto para tu video profesional en minutos</p>
+  </div>
+
+  <div class="avc-progress">
+    <div class="avc-progress-bar">
+      <div class="avc-progress-fill" id="progressFill"></div>
+    </div>
+    <div class="avc-steps">
+      <div class="avc-step active" data-step="1">
+        <div class="avc-step-number">1</div>
+        <div class="avc-step-label">Sujeto</div>
+      </div>
+      <div class="avc-step" data-step="2">
+        <div class="avc-step-number">2</div>
+        <div class="avc-step-label">Acción</div>
+      </div>
+      <div class="avc-step" data-step="3">
+        <div class="avc-step-number">3</div>
+        <div class="avc-step-label">Entorno</div>
+      </div>
+      <div class="avc-step" data-step="4">
+        <div class="avc-step-number">4</div>
+        <div class="avc-step-label">Cámara & Luz</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="avc-form">
+    <!-- PASO 1 -->
+    <div class="avc-step-content active" id="step1">
+      <h2>PASO 1: El Sujeto</h2>
+      <p class="avc-step-desc">¿Quién o qué es la estrella de tu video?</p>
+      <div class="avc-field">
+        <label class="avc-label">Selecciona tu industria:</label>
+        <select class="avc-select" id="industria">
+          <option value="">-- Selecciona una industria --</option>
+        </select>
+      </div>
+      <div class="avc-field" id="sujetoGroup" style="display:none;">
+        <label class="avc-label">Selecciona el sujeto:</label>
+        <select class="avc-select" id="sujeto">
+          <option value="">-- Primero selecciona una industria --</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="avc-step-content" id="step2">
+      <h2>PASO 2: La Acción</h2>
+      <p class="avc-step-desc">¿Qué está haciendo?</p>
+      <div class="avc-field">
+        <label class="avc-label">Tipo de contenido:</label>
+        <div class="avc-radio-group">
+          <label class="avc-radio-card">
+            <input type="radio" name="tipoContenido" value="producto">
+            <span class="avc-radio-label">Producto / Objeto</span>
+          </label>
+          <label class="avc-radio-card">
+            <input type="radio" name="tipoContenido" value="persona">
+            <span class="avc-radio-label">Persona</span>
+          </label>
+          <label class="avc-radio-card">
+            <input type="radio" name="tipoContenido" value="objeto-persona">
+            <span class="avc-radio-label">Objeto con Persona</span>
+          </label>
+          <label class="avc-radio-card">
+            <input type="radio" name="tipoContenido" value="persona-persona">
+            <span class="avc-radio-label">Persona con Persona</span>
+          </label>
+        </div>
+      </div>
+      <div id="accionContent"></div>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="avc-step-content" id="step3">
+      <h2>PASO 3: El Entorno</h2>
+      <p class="avc-step-desc">¿Dónde está sucediendo?</p>
+      <div class="avc-grid" id="entornoGrid"></div>
+    </div>
+
+    <!-- PASO 4 -->
+    <div class="avc-step-content" id="step4">
+      <h2>PASO 4: Cámara y Luz</h2>
+      <p class="avc-step-desc">El toque de película profesional</p>
+      <div class="avc-section">
+        <h3>Tipo de Plano / Ángulo</h3>
+        <p class="avc-section-desc">Puedes seleccionar múltiples opciones</p>
+        <div class="avc-grid" id="camaraGrid"></div>
+      </div>
+      <div class="avc-section">
+        <h3>Iluminación</h3>
+        <p class="avc-section-desc">Puedes seleccionar múltiples opciones</p>
+        <div class="avc-grid" id="luzGrid"></div>
+      </div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="avc-step-content" id="stepResult">
+      <h2>Tu Prompt Está Listo</h2>
+      <p class="avc-step-desc">Copia este prompt y úsalo para generar tu video con IA</p>
+      <div class="avc-result">
+        <textarea class="avc-textarea" id="promptOutput" readonly></textarea>
+        <div class="avc-nav">
+          <button class="avc-btn avc-btn-primary" id="copyBtn">📋 Copiar Prompt</button>
+          <button class="avc-btn avc-btn-secondary" id="restartBtn">🔄 Crear Otro</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="avc-nav">
+    <button class="avc-btn avc-btn-secondary" id="prevBtn" style="visibility:hidden;">← Anterior</button>
+    <button class="avc-btn avc-btn-primary" id="nextBtn">Siguiente →</button>
+  </div>
+
+  <div class="avc-toast" id="toast"></div>
+
+  <script>
+    // Base de datos
+    const DATA = {
+      industrias: {
+        "Belleza - Cabello": [
+          "Cabello con puntas abiertas, seco y con color desgastado",
+          "Cabello sedoso, con brillo espejo y color vibrante recién pintado",
+          "Melena con puntas abiertas, textura pajiza y color mate",
+          "Frasco de vidrio ámbar con gotero de cristal"
+        ],
+        "Belleza - Rostro y piel": [
+          "Rostro con poros visibles, pecas y textura natural",
+          "Rostro con piel ultra hidratada, firme y reluciente",
+          "Frasco de vidrio ámbar con gotero de cristal"
+        ],
+        "Belleza - Uñas": [
+          "Uñas largas con diseño artístico y cristales brillantes",
+          "Cutícula afectada",
+          "Uña con hongo"
+        ],
+        "Joyería": [
+          "Un anillo de compromiso con un diamante que atrapa la luz",
+          "Diamante de corte brillante engastado en oro blanco",
+          "Esmeralda verde profundo con facetas pulidas"
+        ],
+        "Accesorios": [
+          "Cartera de cuero con costuras hechas a mano y detalles metálicos",
+          "Bolso de piel de grano fino con herrajes dorados",
+          "Montura de acetato transparente con lentes oscuros"
+        ],
+        "Social Media Manager/Marketers": [
+          "Una mano sosteniendo un iPhone mostrando una gráfica de crecimiento",
+          "Laptop de aluminio abierta con teclado retroiluminado",
+          "Persona profesional con ropa de lino y expresión relajada",
+          "Pluma fuente de metal sobre un cuaderno de papel crema"
+        ],
+        "Agente de Viajes - Red de Mercadeo": [
+          "Un pasaporte sobre una mesa de cristal con un cóctel al lado",
+          "Maleta de metal cerca de la piscina",
+          "Grupo de amigos vestidos en trajes de baño",
+          "Mujer en la playa tomando sol"
+        ],
+        "Agente de Seguros (De vida, médicos)": [
+          "Una familia joven caminando hacia su nueva casa con tranquilidad",
+          "Señora mayor con carta de hospital",
+          "Mujer calva con cara de preocupación"
+        ],
+        "Agente Inmobiliario": [
+          "Una cocina moderna con topes de cuarzo blanco y luces encendidas",
+          "Casa de arquitectura moderna con grandes ventanales de vidrio",
+          "Llave de metal plateado con llavero de cuero grabado"
+        ],
+        "Escritores/Autores": [
+          "Un libro abierto donde las palabras parecen brillar en la página",
+          "Personas leyendo un libro",
+          "Persona con baja autoestima"
+        ],
+        "Life Coaches": [
+          "Una persona sentada frente al mar con expresión de paz total",
+          "Una persona encima de una montaña",
+          "Una atleta en una carrera",
+          "Una persona de frente a 2 caminos"
+        ],
+        "Gastronomía": [
+          "Carne de hamburguesa soltando jugo mientras se cocina",
+          "Un vaso de cristal con hielo y burbujas subiendo rápidamente",
+          "Un postre decorado de forma que despierte el hambre al verlo",
+          "Bloque de queso amarillo con bordes suaves",
+          "Vaso de cristal transparente con paredes empañadas por el frío",
+          "Hojas de lechuga romana con gotas de agua cristalina"
+        ],
+        "Doctores": [
+          "Un estetoscopio de alta gama sobre una superficie médica limpia",
+          "Persona sentada en una camilla",
+          "Medicamentos en un frasco de plástico"
+        ],
+        "Diseño Gráfico/Creativo": [
+          "Una hoja de papel saliendo de la máquina con colores neón frescos",
+          "Una paleta de colores vibrantes en una pantalla de alta resolución"
+        ],
+        "Vendedor de Auto": [
+          "El frente de un auto deportivo con luces LED encendidas",
+          "Una goma de nieve y una goma de todo terreno",
+          "Una persona al lado de un carro del 1995 maltrecho",
+          "Foco de auto empañado"
+        ],
+        "Portones Eléctricos": [
+          "Un portón de aluminio negro con diseño lineal moderno",
+          "Portón de aluminio negro con diseño de líneas modernas",
+          "Cerradura inteligente de metal cepillado con teclado LED"
+        ],
+        "Construcción": [
+          "Chispas de soldadura azul brillante cayendo sobre metal oscuro",
+          "Engranajes de acero pulido y metal dentado",
+          "Máquina de soldadura profesional con cables reforzados"
+        ]
+      },
+      acciones: {
+        producto: {
+          movimientos: [
+            "Rodar — El objeto rueda de un lado a otro de la pantalla con naturalidad",
+            "Rebotar — El objeto cae y rebota suavemente sobre una superficie elástica",
+            "Girar — El objeto gira lentamente 360° sobre su propio eje mostrando todos sus ángulos"
+          ],
+          transformaciones: [
+            "Desintegrarse — El objeto se convierte en polvo fino que se lleva el viento",
+            "Desmoronarse — El objeto se rompe en mil pedazos en cámara lenta",
+            "Fracturarse — Grietas que aparecen y se extienden por el objeto como un cristal roto"
+          ]
+        },
+        persona: {
+          manosEnAccion: [
+            "Gesticular — Manos moviéndose con entusiasmo mientras explican un concepto",
+            "Señalar — Una mano apunta directamente a un punto importante en la pantalla",
+            "Aplicar — Una mano aplicando crema o producto sobre una superficie o piel"
+          ],
+          movimientoCorporal: [
+            "Caminar hacia la cámara — La persona camina con confianza en línea recta hacia la cámara",
+            "Girar — La persona da una vuelta de 360° mostrando su outfit o presencia completa",
+            "Celebrar — La persona levanta los brazos o puños en señal de logro conseguido"
+          ]
+        },
+        objetoPersona: {
+          llegada: [
+            "Recibir — Una mano se extiende y recibe el producto que cae o es entregado",
+            "Descubrir — La persona abre una caja y su expresión cambia al ver el producto"
+          ],
+          uso: [
+            "Usar con confianza — La persona manipula el producto con dominio y naturalidad",
+            "Mostrar — La persona sostiene el producto hacia la cámara y sonríe"
+          ]
+        },
+        personaPersona: {
+          profesional: [
+            "Cerrar un trato — Dos personas se estrechan la mano al finalizar un acuerdo",
+            "Asesorar — Una persona explica algo a otra que escucha con atención"
+          ],
+          emocional: [
+            "Abrazar — Dos personas se abrazan transmitiendo protección y calidez",
+            "Reír juntos — Dos o más personas ríen de forma natural y espontánea"
+          ]
+        }
+      },
+      entornos: [
+        "Mármol de Lujo: Superficie pulida blanca o negra con reflejos",
+        "Oficina Moderna: Paredes de cristal, plantas y vista a la ciudad",
+        "Estudio Fotográfico: Fondo liso y perfecto (blanco, gris o pastel)",
+        "Jardín Tropical: Muchas hojas verdes, flores y luz de sol",
+        "Playa Paradisiaca: Arena blanca y agua azul turquesa"
+      ],
+      camara: [
+        "Plano General Extremo",
+        "Plano Medio",
+        "Primer Plano (Close-up)",
+        "Plano Detalle (Macro)",
+        "Dolly In"
+      ],
+      luz: [
+        "Luz de Atardecer (Golden Hour)",
+        "Luz de Estudio",
+        "Luz de Neón",
+        "Luz Difusa (o suave)"
+      ]
+    };
+
+    // Variables globales
+    let currentStep = 1;
+    const formData = {};
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+      initIndustrias();
+      initEventListeners();
+      updateProgress();
+    });
+
+    function initIndustrias() {
+      const select = document.getElementById('industria');
+      Object.keys(DATA.industrias).forEach(industria => {
+        const option = document.createElement('option');
+        option.value = industria;
+        option.textContent = industria;
+        select.appendChild(option);
+      });
+    }
+
+    function initEventListeners() {
+      document.getElementById('industria').addEventListener('change', handleIndustriaChange);
+      document.getElementById('nextBtn').addEventListener('click', nextStep);
+      document.getElementById('prevBtn').addEventListener('click', prevStep);
+      document.getElementById('copyBtn').addEventListener('click', copyPrompt);
+      document.getElementById('restartBtn').addEventListener('click', restart);
+      
+      document.querySelectorAll('input[name="tipoContenido"]').forEach(radio => {
+        radio.addEventListener('change', handleTipoContenidoChange);
+      });
+    }
+
+    function handleIndustriaChange(e) {
+      const industria = e.target.value;
+      const sujetoGroup = document.getElementById('sujetoGroup');
+      const sujetoSelect = document.getElementById('sujeto');
+      
+      if (!industria) {
+        sujetoGroup.style.display = 'none';
+        return;
+      }
+      
+      sujetoGroup.style.display = 'block';
+      sujetoSelect.innerHTML = '<option value="">-- Selecciona un sujeto --</option>';
+      
+      DATA.industrias[industria].forEach(sujeto => {
+        const option = document.createElement('option');
+        option.value = sujeto;
+        option.textContent = sujeto;
+        sujetoSelect.appendChild(option);
+      });
+      
+      sujetoSelect.addEventListener('change', () => {
+        formData.sujeto = sujetoSelect.value;
+      });
+    }
+
+    function handleTipoContenidoChange(e) {
+      const tipo = e.target.value;
+      formData.tipoContenido = tipo;
+      const content = document.getElementById('accionContent');
+      content.innerHTML = '';
+      
+      if (tipo === 'producto') {
+        renderAccionesProducto(content);
+      } else if (tipo === 'persona') {
+        renderAccionesPersona(content);
+      } else if (tipo === 'objeto-persona') {
+        renderAccionesObjetoPersona(content);
+      } else if (tipo === 'persona-persona') {
+        renderAccionesPersonaPersona(content);
+      }
+    }
+
+    function renderAccionesProducto(container) {
+      const section = createSection('Movimientos');
+      const grid = createGrid(DATA.acciones.producto.movimientos);
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function renderAccionesPersona(container) {
+      const section = createSection('Manos en Acción');
+      const grid = createGrid(DATA.acciones.persona.manosEnAccion);
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function renderAccionesObjetoPersona(container) {
+      const section = createSection('Llegada del Objeto');
+      const grid = createGrid(DATA.acciones.objetoPersona.llegada);
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function renderAccionesPersonaPersona(container) {
+      const section = createSection('Interacción Profesional');
+      const grid = createGrid(DATA.acciones.personaPersona.profesional);
+      section.appendChild(grid);
+      container.appendChild(section);
+    }
+
+    function createSection(title) {
+      const section = document.createElement('div');
+      section.className = 'avc-section';
+      const h3 = document.createElement('h3');
+      h3.textContent = title;
+      section.appendChild(h3);
+      return section;
+    }
+
+    function createGrid(options) {
+      const grid = document.createElement('div');
+      grid.className = 'avc-grid';
+      
+      options.forEach((option, index) => {
+        const label = document.createElement('label');
+        label.className = 'avc-option';
+        
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'accion';
+        input.value = option.split(' — ')[0];
+        input.addEventListener('change', () => {
+          formData.accion = option.split(' — ')[0];
+        });
+        
+        const span = document.createElement('span');
+        span.className = 'avc-option-label';
+        span.textContent = option;
+        
+        label.appendChild(input);
+        label.appendChild(span);
+        grid.appendChild(label);
+      });
+      
+      return grid;
+    }
+
+    function nextStep() {
+      if (currentStep === 1 && !validateStep1()) {
+        showToast('Por favor completa todos los campos');
+        return;
+      }
+      
+      if (currentStep === 2 && !validateStep2()) {
+        showToast('Por favor selecciona una acción');
+        return;
+      }
+      
+      if (currentStep === 3) {
+        initEntornos();
+      }
+      
+      if (currentStep === 4) {
+        initCamaraLuz();
+      }
+      
+      if (currentStep < 5) {
+        currentStep++;
+        if (currentStep === 5) {
+          generatePrompt();
+        }
+        updateStepView();
+        updateProgress();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepView();
+        updateProgress();
+      }
+    }
+
+    function validateStep1() {
+      return document.getElementById('sujeto').value !== '';
+    }
+
+    function validateStep2() {
+      return formData.accion !== undefined;
+    }
+
+    function initEntornos() {
+      const grid = document.getElementById('entornoGrid');
+      if (grid.children.length > 0) return;
+      
+      DATA.entornos.forEach(entorno => {
+        const label = document.createElement('label');
+        label.className = 'avc-option';
+        
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'entorno';
+        input.value = entorno.split(':')[0];
+        input.addEventListener('change', () => {
+          formData.entorno = entorno.split(':')[0];
+        });
+        
+        const span = document.createElement('span');
+        span.className = 'avc-option-label';
+        span.textContent = entorno;
+        
+        label.appendChild(input);
+        label.appendChild(span);
+        grid.appendChild(label);
+      });
+    }
+
+    function initCamaraLuz() {
+      const camaraGrid = document.getElementById('camaraGrid');
+      const luzGrid = document.getElementById('luzGrid');
+      
+      if (camaraGrid.children.length === 0) {
+        DATA.camara.forEach(cam => {
+          const label = document.createElement('label');
+          label.className = 'avc-option';
+          
+          const input = document.createElement('input');
+          input.type = 'checkbox';
+          input.value = cam;
+          input.addEventListener('change', updateCamara);
+          
+          const span = document.createElement('span');
+          span.className = 'avc-option-label';
+          span.textContent = cam;
+          
+          label.appendChild(input);
+          label.appendChild(span);
+          camaraGrid.appendChild(label);
+        });
+      }
+      
+      if (luzGrid.children.length === 0) {
+        DATA.luz.forEach(luz => {
+          const label = document.createElement('label');
+          label.className = 'avc-option';
+          
+          const input = document.createElement('input');
+          input.type = 'checkbox';
+          input.value = luz;
+          input.addEventListener('change', updateLuz);
+          
+          const span = document.createElement('span');
+          span.className = 'avc-option-label';
+          span.textContent = luz;
+          
+          label.appendChild(input);
+          label.appendChild(span);
+          luzGrid.appendChild(label);
+        });
+      }
+    }
+
+    function updateCamara() {
+      const selected = Array.from(document.querySelectorAll('#camaraGrid input:checked')).map(i => i.value);
+      formData.camara = selected;
+    }
+
+    function updateLuz() {
+      const selected = Array.from(document.querySelectorAll('#luzGrid input:checked')).map(i => i.value);
+      formData.luz = selected;
+    }
+
+    function generatePrompt() {
+      const sujeto = formData.sujeto || 'un sujeto';
+      const accion = formData.accion || 'en acción';
+      const entorno = formData.entorno || 'en un entorno profesional';
+      const camara = formData.camara && formData.camara.length > 0 ? formData.camara.join(', ') : 'con composición profesional';
+      const luz = formData.luz && formData.luz.length > 0 ? formData.luz.join(', ') : 'con iluminación cinematográfica';
+      
+      const prompt = `Crea un video cinematográfico y profesional de ${sujeto} ${accion} en ${entorno}, grabado con ${camara}, utilizando ${luz}, con estilo fotorrealista y acabado premium.`;
+      
+      document.getElementById('promptOutput').value = prompt;
+    }
+
+    function copyPrompt() {
+      const textarea = document.getElementById('promptOutput');
+      textarea.select();
+      document.execCommand('copy');
+      showToast('¡Prompt copiado correctamente!');
+    }
+
+    function restart() {
+      currentStep = 1;
+      Object.keys(formData).forEach(key => delete formData[key]);
+      document.getElementById('industria').value = '';
+      document.getElementById('sujetoGroup').style.display = 'none';
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+      updateStepView();
+      updateProgress();
+    }
+
+    function updateStepView() {
+      document.querySelectorAll('.avc-step-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      if (currentStep === 5) {
+        document.getElementById('stepResult').classList.add('active');
+        document.getElementById('nextBtn').style.display = 'none';
+      } else {
+        document.getElementById('step' + currentStep).classList.add('active');
+        document.getElementById('nextBtn').style.display = 'flex';
+      }
+      
+      document.getElementById('prevBtn').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
+    }
+
+    function updateProgress() {
+      const progress = ((currentStep - 1) / 4) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+      
+      document.querySelectorAll('.avc-step').forEach((step, index) => {
+        if (index + 1 === currentStep) {
+          step.classList.add('active');
+        } else {
+          step.classList.remove('active');
+        }
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</div>

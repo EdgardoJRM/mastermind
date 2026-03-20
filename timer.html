@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control de Tiempos - Evento</title>
+    <link rel="stylesheet" href="timer-styles.css">
+</head>
+<body>
+    <!-- Selector de Vista -->
+    <div class="view-selector">
+        <button class="view-btn active" data-view="control">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"></path>
+            </svg>
+            Panel de Control
+        </button>
+        <button class="view-btn" data-view="display">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            Pantalla de Proyección
+        </button>
+    </div>
+
+    <!-- VISTA 1: PANEL DE CONTROL -->
+    <div id="control-view" class="view active">
+        <div class="control-container">
+            <div class="control-header">
+                <h1>Panel de Control de Tiempos</h1>
+                <div class="current-time" id="currentTime">00:00:00</div>
+            </div>
+
+            <div class="control-content">
+                <!-- Selector de Sesión -->
+                <div class="control-section">
+                    <label for="sessionSelect">Sesión Actual:</label>
+                    <select id="sessionSelect" class="session-select">
+                        <option value="">-- Selecciona una sesión --</option>
+                    </select>
+                </div>
+
+                <!-- Información de la Sesión -->
+                <div class="session-info" id="sessionInfo" style="display: none;">
+                    <div class="info-row">
+                        <span class="label">Título:</span>
+                        <span class="value" id="sessionTitle">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Presentador:</span>
+                        <span class="value" id="sessionPresenter">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Hora Inicio:</span>
+                        <span class="value" id="sessionStart">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Hora Fin:</span>
+                        <span class="value" id="sessionEnd">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Duración:</span>
+                        <span class="value" id="sessionDuration">-</span>
+                    </div>
+                </div>
+
+                <!-- Controles de Tiempo -->
+                <div class="control-section">
+                    <label>Controles:</label>
+                    <div class="button-group">
+                        <button id="startBtn" class="btn btn-success">Iniciar</button>
+                        <button id="pauseBtn" class="btn btn-warning" disabled>Pausar</button>
+                        <button id="resumeBtn" class="btn btn-info" disabled>Reanudar</button>
+                        <button id="nextBtn" class="btn btn-secondary">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Ajuste Manual de Tiempo -->
+                <div class="control-section">
+                    <label for="timeAdjust">Ajustar Tiempo (minutos):</label>
+                    <div class="time-adjust-group">
+                        <button id="minusBtn" class="btn btn-small">-5 min</button>
+                        <input type="number" id="timeAdjust" class="time-input" value="0" min="-60" max="60">
+                        <button id="plusBtn" class="btn btn-small">+5 min</button>
+                    </div>
+                </div>
+
+                <!-- Estado del Temporizador -->
+                <div class="timer-status">
+                    <div class="status-item">
+                        <span class="status-label">Estado:</span>
+                        <span class="status-value" id="timerStatus">Detenido</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Tiempo Transcurrido:</span>
+                        <span class="status-value" id="elapsedTime">00:00</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Tiempo Restante:</span>
+                        <span class="status-value" id="remainingTime">00:00</span>
+                    </div>
+                </div>
+
+                <!-- Indicador Visual -->
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <!-- Información Adicional -->
+                <div class="additional-info">
+                    <h3>Información del Evento</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <span class="info-title">Almuerzo</span>
+                            <span class="info-time">12:00 - 13:30</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-title">Mastermind (antes almuerzo)</span>
+                            <span class="info-time">11:00 - 12:00</span>
+                        </div>
+                        <div class="info-card">
+                            <span class="info-title">Cierre</span>
+                            <span class="info-time">17:00 - 17:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA 2: PANTALLA DE PROYECCIÓN -->
+    <div id="display-view" class="view">
+        <div class="display-container">
+            <!-- Encabezado -->
+            <div class="display-header">
+                <div class="display-time" id="displayCurrentTime">00:00:00</div>
+            </div>
+
+            <!-- Contenido Principal -->
+            <div class="display-content" id="displayContent">
+                <div class="session-display">
+                    <div class="presenter-name" id="displayPresenter">-</div>
+                    <div class="session-title" id="displayTitle">-</div>
+                </div>
+
+                <!-- Temporizador Grande -->
+                <div class="timer-display" id="timerDisplay">
+                    <div class="timer-value" id="displayTimer">00:00</div>
+                    <div class="timer-label" id="displayTimerLabel">Tiempo Restante</div>
+                </div>
+
+                <!-- Barra de Progreso -->
+                <div class="display-progress-container">
+                    <div class="display-progress-bar" id="displayProgressBar"></div>
+                </div>
+
+                <!-- Estado -->
+                <div class="display-status" id="displayStatus">En Tiempo</div>
+            </div>
+
+            <!-- Información Adicional en Pantalla -->
+            <div class="display-footer">
+                <div class="footer-item">
+                    <span class="footer-label">Próxima Sesión:</span>
+                    <span class="footer-value" id="nextSessionDisplay">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="agenda.js"></script>
+    <script src="timer-control.js"></script>
+    <script src="timer-display.js"></script>
+    <script src="timer-main.js"></script>
+</body>
+</html>

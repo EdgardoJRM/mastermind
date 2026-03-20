@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Sincronización - Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .test-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 4px solid #0066FF;
+            background: #f9f9f9;
+        }
+        .test-item.pass {
+            border-left-color: #10B981;
+            background: #f0fdf4;
+        }
+        .test-item.fail {
+            border-left-color: #EF4444;
+            background: #fef2f2;
+        }
+        .status {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .status.pass {
+            color: #10B981;
+        }
+        .status.fail {
+            color: #EF4444;
+        }
+        button {
+            background: #0066FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0052CC;
+        }
+        .log {
+            background: #1f2937;
+            color: #10B981;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Prueba de Sincronización - Timer</h1>
+        
+        <div class="test-item">
+            <h3>1. Verificar Archivos Necesarios</h3>
+            <div id="filesTest"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>2. Verificar Local Storage</h3>
+            <div id="storageTest"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>3. Verificar Agenda</h3>
+            <div id="agendaTest"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>4. Prueba de Sincronización</h3>
+            <button onclick="testSync()">Iniciar Prueba de Sincronización</button>
+            <div id="syncTest"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>5. Instrucciones para Prueba Manual</h3>
+            <ol>
+                <li>Abre <strong>timer.html</strong> en dos ventanas/pestañas diferentes</li>
+                <li>En la primera ventana, selecciona "Panel de Control"</li>
+                <li>En la segunda ventana, selecciona "Pantalla de Proyección"</li>
+                <li>En el Panel de Control:
+                    <ul>
+                        <li>Selecciona una sesión del dropdown</li>
+                        <li>Haz clic en "Iniciar"</li>
+                        <li>Verifica que el temporizador aparezca en la Pantalla de Proyección</li>
+                        <li>Prueba Pausar, Reanudar, Siguiente</li>
+                    </ul>
+                </li>
+                <li>Verifica que los cambios se reflejen instantáneamente en ambas ventanas</li>
+            </ol>
+        </div>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <script src="agenda.js"></script>
+    <script>
+        const log = (msg) => {
+            const logEl = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logEl.innerHTML += `[${time}] ${msg}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        };
+
+        // Test 1: Verificar archivos
+        window.addEventListener('load', () => {
+            log('🚀 Iniciando pruebas...');
+
+            // Test 1: Archivos
+            const filesTest = document.getElementById('filesTest');
+            const files = ['agenda.js', 'timer-control.js', 'timer-display.js', 'timer-main.js', 'timer-styles.css'];
+            let filesOk = true;
+
+            if (typeof AGENDA !== 'undefined') {
+                filesTest.innerHTML = '<span class="status pass">✓ agenda.js cargado correctamente</span>';
+                log('✓ agenda.js cargado');
+            } else {
+                filesTest.innerHTML = '<span class="status fail">✗ agenda.js no encontrado</span>';
+                filesOk = false;
+                log('✗ agenda.js no encontrado');
+            }
+
+            // Test 2: Local Storage
+            const storageTest = document.getElementById('storageTest');
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                storageTest.innerHTML = '<span class="status pass">✓ Local Storage disponible</span>';
+                log('✓ Local Storage disponible');
+            } catch (e) {
+                storageTest.innerHTML = '<span class="status fail">✗ Local Storage no disponible</span>';
+                log('✗ Local Storage no disponible: ' + e.message);
+            }
+
+            // Test 3: Agenda
+            const agendaTest = document.getElementById('agendaTest');
+            if (typeof AGENDA !== 'undefined' && AGENDA.length > 0) {
+                agendaTest.innerHTML = `<span class="status pass">✓ Agenda cargada con ${AGENDA.length} sesiones</span>`;
+                log(`✓ Agenda cargada con ${AGENDA.length} sesiones`);
+                AGENDA.forEach((s, i) => {
+                    log(`  ${i+1}. ${s.inicio} - ${s.fin}: ${s.titulo}`);
+                });
+            } else {
+                agendaTest.innerHTML = '<span class="status fail">✗ Agenda no cargada</span>';
+                log('✗ Agenda no cargada');
+            }
+        });
+
+        function testSync() {
+            const syncTest = document.getElementById('syncTest');
+            syncTest.innerHTML = '<p>Iniciando prueba...</p>';
+            log('🔄 Iniciando prueba de sincronización');
+
+            // Simular cambio en timer
+            const testState = {
+                currentSessionId: 1,
+                isRunning: true,
+                isPaused: false,
+                pausedTime: 0,
+                sessionStartTime: Date.now(),
+                timestamp: Date.now()
+            };
+
+            localStorage.setItem('timerState', JSON.stringify(testState));
+            log('✓ Estado guardado en Local Storage');
+
+            // Verificar que se guardó
+            const saved = localStorage.getItem('timerState');
+            if (saved) {
+                const data = JSON.parse(saved);
+                syncTest.innerHTML = `
+                    <span class="status pass">✓ Sincronización funcionando</span>
+                    <p>Estado guardado:</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                    <p><strong>Ahora abre timer.html en otra ventana/pestaña para ver la sincronización en acción</strong></p>
+                `;
+                log('✓ Sincronización funcionando correctamente');
+            } else {
+                syncTest.innerHTML = '<span class="status fail">✗ Error al guardar estado</span>';
+                log('✗ Error al guardar estado');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creando mi Video con IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                Herramienta Profesional IA
+            </div>
+            <h1>Creando mi Video con IA</h1>
+            <p class="subtitle">Genera el prompt perfecto para tu video profesional en minutos</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Sujeto</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Acción</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Entorno</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Cámara & Luz</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Steps -->
+        <div class="form-container">
+            
+            <!-- PASO 1: El Sujeto -->
+            <div class="step-content active" id="step1">
+                <h2>PASO 1: El Sujeto</h2>
+                <p class="step-description">¿Quién o qué es la estrella de tu video?</p>
+                
+                <div class="form-group">
+                    <label for="industria">Selecciona tu industria:</label>
+                    <select id="industria" class="form-select">
+                        <option value="">-- Selecciona una industria --</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="sujetoGroup" style="display: none;">
+                    <label for="sujeto">Selecciona el sujeto:</label>
+                    <select id="sujeto" class="form-select">
+                        <option value="">-- Primero selecciona una industria --</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PASO 2: La Acción -->
+            <div class="step-content" id="step2">
+                <h2>PASO 2: La Acción</h2>
+                <p class="step-description">¿Qué está haciendo?</p>
+                
+                <div class="form-group">
+                    <label>Tipo de contenido:</label>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="tipoContenido" value="producto">
+                            <span class="radio-label">Producto / Objeto</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="tipoContenido" value="persona">
+                            <span class="radio-label">Persona</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="tipoContenido" value="objeto-persona">
+                            <span class="radio-label">Objeto con Persona</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="tipoContenido" value="persona-persona">
+                            <span class="radio-label">Persona con Persona</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Contenido dinámico según tipo -->
+                <div id="accionContent"></div>
+            </div>
+
+            <!-- PASO 3: El Entorno -->
+            <div class="step-content" id="step3">
+                <h2>PASO 3: El Entorno</h2>
+                <p class="step-description">¿Dónde está sucediendo?</p>
+                
+                <div class="grid-options" id="entornoGrid"></div>
+            </div>
+
+            <!-- PASO 4: Cámara y Luz -->
+            <div class="step-content" id="step4">
+                <h2>PASO 4: Cámara y Luz</h2>
+                <p class="step-description">El toque de película profesional</p>
+                
+                <div class="form-section">
+                    <h3>Tipo de Plano / Ángulo</h3>
+                    <p class="section-description">Puedes seleccionar múltiples opciones</p>
+                    <div class="grid-options checkbox-grid" id="camaraGrid"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Iluminación</h3>
+                    <p class="section-description">Puedes seleccionar múltiples opciones</p>
+                    <div class="grid-options checkbox-grid" id="luzGrid"></div>
+                </div>
+            </div>
+
+            <!-- Resultado Final -->
+            <div class="step-content" id="stepResult">
+                <h2>Tu Prompt Está Listo</h2>
+                <p class="step-description">Copia este prompt y úsalo para generar tu video con IA</p>
+                
+                <div class="result-container">
+                    <div class="prompt-display">
+                        <textarea id="promptOutput" rows="6" readonly></textarea>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn btn-primary" id="copyBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copiar al Portapapeles
+                        </button>
+                        <button class="btn btn-secondary" id="restartBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                            </svg>
+                            Crear Otro Prompt
+                        </button>
+                    </div>
+
+                    <div class="formula-reference">
+                        <h4>Fórmula utilizada:</h4>
+                        <p>[SUJETO] + [ACCIÓN] + [ENTORNO] + [CÁMARA Y LUZ]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">Anterior</button>
+            <button class="btn btn-primary" id="nextBtn">Siguiente</button>
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
