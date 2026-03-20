@@ -125,6 +125,7 @@ class TimerControl {
     this.pausedTime = Date.now() - this.startTime;
 
     clearInterval(this.timerInterval);
+    this.timerInterval = null;
     this.updateButtonStates();
     this.timerStatus.textContent = 'Pausado';
     this.saveState();
@@ -141,6 +142,7 @@ class TimerControl {
     this.timerStatus.textContent = 'En Ejecución';
     this.saveState();
 
+    clearInterval(this.timerInterval);
     this.timerInterval = setInterval(() => this.updateTimer(), 100);
   }
 
@@ -148,8 +150,10 @@ class TimerControl {
     this.isRunning = false;
     this.isPaused = false;
     clearInterval(this.timerInterval);
+    this.timerInterval = null;
     this.updateButtonStates();
     this.timerStatus.textContent = 'Detenido';
+    this.saveState();
   }
 
   resetTimer() {
