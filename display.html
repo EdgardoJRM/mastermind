@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Proyección - Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="timer-styles.css">
+</head>
+<body>
+    <!-- VISTA: PANTALLA DE PROYECCIÓN -->
+    <div id="display-view" class="view active">
+        <div class="display-container">
+            <!-- Encabezado -->
+            <div class="display-header">
+                <div class="display-time" id="displayCurrentTime">00:00:00</div>
+            </div>
+
+            <!-- Contenido Principal -->
+            <div class="display-content" id="displayContent">
+                <div class="session-display">
+                    <div class="presenter-name" id="displayPresenter">-</div>
+                    <div class="session-title" id="displayTitle">-</div>
+                </div>
+
+                <!-- Temporizador Grande -->
+                <div class="timer-display" id="timerDisplay">
+                    <div class="timer-value" id="displayTimer">00:00</div>
+                    <div class="timer-label" id="displayTimerLabel">Tiempo Restante</div>
+                </div>
+
+                <!-- Barra de Progreso -->
+                <div class="display-progress-container">
+                    <div class="display-progress-bar" id="displayProgressBar"></div>
+                </div>
+
+                <!-- Estado -->
+                <div class="display-status" id="displayStatus">En Tiempo</div>
+            </div>
+
+            <!-- Información Adicional en Pantalla -->
+            <div class="display-footer">
+                <div class="footer-info">
+                    <div class="footer-item">
+                        <span class="footer-label">Próxima Sesión:</span>
+                        <span class="footer-value" id="nextSessionDisplay">-</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-label">Tiempo Transcurrido:</span>
+                        <span class="footer-value" id="elapsedDisplay">00:00</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-label">Sesión:</span>
+                        <span class="footer-value" id="sessionNumberDisplay">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="agenda.js"></script>
+    <script src="timer-display.js"></script>
+    <script src="timer-main.js"></script>
+</body>
+</html>
